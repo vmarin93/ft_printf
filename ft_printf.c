@@ -28,18 +28,18 @@ int	ft_printf(const char *format, ...)
 				ft_putstr_fd(str, 1);
 				chars_printed = ft_strlen(str);
 			}
-			else if (format[i + 1] == 'p')
-			{
-				ft_putchar_fd('0', 1);
-				ft_putchar_fd('x', 1);
-				chars_printed += 2;
-				chars_printed += ft_putnbr_fd((uintptr_t)va_arg(args, uintptr_t), "0123456789abcdef", 1);
-			}
-			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-			{
-				chars_printed += ft_putnbr_fd(va_arg(args, int), "0123456789", 1);
-			}
-			i++;
+		//	else if (format[i + 1] == 'p')
+		//	{
+		//		ft_putchar_fd('0', 1);
+		//		ft_putchar_fd('x', 1);
+		//		chars_printed += 2;
+		//		chars_printed += ft_putnbr_fd((uintptr_t)va_arg(args, uintptr_t), "0123456789abcdef", 1);
+		//	}
+		//	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		//	{
+		//		chars_printed += ft_putnbr_fd(va_arg(args, int), "0123456789", 1);
+		//	}
+		//	i++;
 		}
 		else 
 		{
@@ -61,15 +61,15 @@ int	main(void)
 	printf("%d chars printed to the screen \n", ft_printf("%s \n", "Hello!"));
 	printf("%d chars printed to the screen \n", printf("%s \n", "Hello!"));
 	printf("\n\n");
-	printf("%d chars printed to the screen \n", ft_printf("%d \n", 231));
-	printf("%d chars printed to the screen \n", printf("%d \n", 231));
-	printf("\n\n");
-	void	*ptr;
-
-	ptr = "";
-	printf("%d chars printed to the screen \n", ft_printf("%p \n", ptr));
-	printf("%d chars printed to the screen \n", printf("%p \n", ptr));
-	printf("\n\n");
-	printf("%d \n", 0x2A); 
-	ft_printf("%d \n", 0x2A);
+//	printf("%d chars printed to the screen \n", ft_printf("%d \n", 231));
+//	printf("%d chars printed to the screen \n", printf("%d \n", 231));
+//	printf("\n\n");
+//	void	*ptr;
+//
+//	ptr = "";
+//	printf("%d chars printed to the screen \n", ft_printf("%p \n", ptr));
+//	printf("%d chars printed to the screen \n", printf("%p \n", ptr));
+//	printf("\n\n");
+//	printf("%d \n", 0x2A); 
+//	ft_printf("%d \n", 0x2A);
 }
