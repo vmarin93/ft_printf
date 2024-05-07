@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <limits.h>
 #include <stdarg.h>
-#include <stdint.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -35,11 +35,11 @@ int	ft_printf(const char *format, ...)
 		//		chars_printed += 2;
 		//		chars_printed += ft_putnbr_fd((uintptr_t)va_arg(args, uintptr_t), "0123456789abcdef", 1);
 		//	}
-		//	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-		//	{
-		//		chars_printed += ft_putnbr_fd(va_arg(args, int), "0123456789", 1);
-		//	}
-		//	i++;
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+			{
+				chars_printed += ft_putnbr_fd(va_arg(args, int), 1);
+			}
+			i++;
 		}
 		else 
 		{
@@ -61,8 +61,11 @@ int	main(void)
 	printf("%d chars printed to the screen \n", ft_printf("%s \n", "Hello!"));
 	printf("%d chars printed to the screen \n", printf("%s \n", "Hello!"));
 	printf("\n\n");
-//	printf("%d chars printed to the screen \n", ft_printf("%d \n", 231));
-//	printf("%d chars printed to the screen \n", printf("%d \n", 231));
+	printf("%d chars printed to the screen \n", ft_printf("%d \n", INT_MIN));
+	printf("%d chars printed to the screen \n", printf("%d \n", INT_MIN));
+	printf("\n\n");
+	printf("%d chars printed to the screen \n", ft_printf("%i \n", INT_MAX));
+	printf("%d chars printed to the screen \n", printf("%i \n", INT_MAX));
 //	printf("\n\n");
 //	void	*ptr;
 //

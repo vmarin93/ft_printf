@@ -11,36 +11,36 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
-static void	do_putnbr(long n, int base, char *base_digits, int fd)
+static int	do_putnbr(int n, int fd, int *chars_printed)
 {
+	char	digit;
+
 	if (n == 0)
-		write(fd, "0", sizeof(char));
+		chars_printed += write(fd, "0", sizeof(char));
 	else if (n / 10 != 0)
 	{
-		do_putnbr(n / base, base, base_digits, fd);
-		do_putnbr(n % base, base, base_digits, fd);
+		do_putnbr(n / 10, fd, chars_printed);
+		do_putnbr(n % 10, fd, chars_printed);
 	}
 	else
 	{
-		write(fd, &base_digits[n], sizeof(char));
+		digit = -n + '0';
+		write(fd, &digit, sizeof(char));
+		(*chars_printed) += 1;
 	}
+	return (0);
 }
 
-void	ft_putnbr_fd(long n, char *base_digits, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
-	int	base;
+	int	chars_printed;
 
-	base = ft_strlen(base_digits);
-	if (base == 16)
-		do_putnbr(n, base, base_digits, fd);
-	else
-	{
-		if (n < 0)
-			write(fd, "-", sizeof(char));
-		if (n > 0)
-			n *= -1;
-		do_putnbr(n, base, base_digits, fd);
-	}
+	chars_printed = 0;
+	if (n < 0)
+		chars_printed += write(fd, "-", sizeof(char));
+	if (n > 0)
+		n *= -1;
+	chars_printed += do_putnbr(n, fd, &chars_printed);
+	return (chars_printed);
 }
