@@ -22,7 +22,6 @@ ${NAME}: ${OBJS} libft
 	ar rcs ${NAME} ${OBJS}
 	ar -x ${LIBFT_DIR}/libft.a
 	ar rcs ${NAME} *.o
-	${RM} *.o
 
 libft:
 	cd ${LIBFT_DIR} && ${MAKE}
@@ -31,7 +30,7 @@ libft:
 	${CC} ${CPPFLAGS} ${CCFLAGS} -o $@ -c $<
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} *.o
 	cd ${LIBFT_DIR} && ${MAKE} clean
 
 fclean: 

@@ -1,5 +1,6 @@
 #include "libft/libft.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -23,8 +24,16 @@ int	ft_printf(const char *format, ...)
 			{
 				char	*str;
 				str = va_arg(args, char *);
-				ft_putstr_fd(str, 1);
-				chars_printed = ft_strlen(str);
+				if (str == NULL)
+				{
+					ft_putstr_fd("(null)", 1);
+					chars_printed += 6;
+				}
+				else
+				{
+					ft_putstr_fd(str, 1);
+					chars_printed += ft_strlen(str);
+				}
 			}
 			else if (format[i + 1] == 'p')
 			{
@@ -34,7 +43,7 @@ int	ft_printf(const char *format, ...)
 				if (ptr == NULL)
 				{
 					ft_putstr_fd("(nil)", 1);
-					chars_printed = 5;
+					chars_printed += 5;
 				}
 				else
 				{

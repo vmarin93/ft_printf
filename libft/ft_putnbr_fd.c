@@ -6,7 +6,7 @@
 /*   By: vmarin <vmarin@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 17:33:42 by vmarin            #+#    #+#             */
-/*   Updated: 2024/05/01 18:30:37 by vmarin           ###   ########.fr       */
+/*   Updated: 2024/05/08 15:13:54 by vmarin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static int	do_putnbr(int n, int fd, int *chars_printed)
 {
 	char	digit;
 
-	if (n == 0)
-		chars_printed += write(fd, "0", sizeof(char));
-	else if (n / 10 != 0)
+	if (n / 10 != 0)
 	{
 		do_putnbr(n / 10, fd, chars_printed);
 		do_putnbr(n % 10, fd, chars_printed);
