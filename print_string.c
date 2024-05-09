@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmarin <vmarin@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 17:15:22 by vmarin            #+#    #+#             */
-/*   Updated: 2024/05/09 18:39:58 by vmarin           ###   ########.fr       */
+/*   Created: 2024/05/09 18:37:37 by vmarin            #+#    #+#             */
+/*   Updated: 2024/05/09 18:43:20 by vmarin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft/libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	print_string(char *str)
 {
-	write(fd, &c, sizeof(char));
+	int	c_printed;
+
+	c_printed = 0;
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		c_printed += 6;
+	}
+	else
+	{
+		ft_putstr_fd(str, 1);
+		c_printed += ft_strlen(str);
+	}
+	return (c_printed);
 }

@@ -1,4 +1,4 @@
-SRC = ft_printf.c
+SRC = ft_printf.c print_char.c print_string.c print_ptr.c
 
 LIBFT_DIR = ./libft
 
